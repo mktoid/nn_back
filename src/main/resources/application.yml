@@ -1,0 +1,37 @@
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, shutdown
+  endpoint:
+    shutdown:
+      enabled: true
+
+spring:
+  datasource:
+    hikari:
+      connectionTimeout: 20000
+      maximumPoolSize: 5
+    url: jdbc:postgresql://localhost/nn
+    username: postgres
+    password: root
+
+  jackson:
+    visibility.field: any
+    visibility.getter: none
+    visibility.setter: none
+    visibility.is-getter: none
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+    hibernate:
+      ddl-auto: update
+  liquibase:
+    enabled: false
+
+format:
+  local-date-time: yyyy-MM-dd HH:mm:ss
+  local-date: dd-MM-yyyy
